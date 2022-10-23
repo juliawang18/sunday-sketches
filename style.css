@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'Juliawang';
+    src: url("./fonts/Juliawang-Regular.ttf") format('truetype'); 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Juliawang";
+    font-size: 2.3rem;
+    letter-spacing: 0.01rem;
+
+    background-color: #ffc800;
+}
+
+button {
+    padding: 0.8rem 2rem;
+    background-color: #000;
+    color: #ffc800;
+    border: 2px solid #000;
+
+    font-family: "Inter";
+    font-size: 1rem;
+    letter-spacing: 0.01rem;
+}
+
+button:hover {
+    background: none;
+    color: #000;
+    cursor: pointer;
+}
+
+ol {
+    text-align: left;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    padding: 5rem;
+}
+
+.left-container {
+    width: 30vw;
+    max-height: 100vh;
+}
+
+.right-container {
+    width: 70vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.header-img {
+    max-width: 100%;
+}
+
+.header-gif {
+    max-width: 80%;
+}
+
+.sketch-container {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    position: absolute;
+    min-width: 200px;
+    width: 10vw;
+    max-width: 500px;
+    padding: 2rem;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo {
+    width: 100%;
+}
+
+.control-container {
+    transform: translate(0, 0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    min-width: 300px;
+    padding: 6rem 3rem 3rem 3rem;
+    background-color: #ffc800;
+    transition: transform 0.35s
+}
+
+.hideMenu {
+    transform: translate(40vw, -40vh);
+    transition: transform 0.35s
+}
+
+.refresh-container {
+    height: 1rem;
+}
+
+.control-tab {
+    margin: 2rem 3rem;
+    
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+}
+
+.control-tab:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.toolbar {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    z-index: 11;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toolbar img {
+    height: 10vh;
+}
+
+.toolbar img:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+

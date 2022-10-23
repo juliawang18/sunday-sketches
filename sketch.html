@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Sunday Sketching</title>
+    <meta name="description" content="Our first page">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/510/fabric.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="js/menu.js" defer></script> 
+    <script type="text/javascript" src="js/brush.js" defer></script> 
+</head>
+
+<body>
+    <div class="sketch-container">
+        <div class="logo-container">
+            <a href="index.html"><img class="logo" src="./imgs/sunday_header.png" /></a>
+        </div>
+        <div id="tab" class="control-tab" onclick="toggleMenu()">Done?</div>
+        <div id="menu" class="control-container hideMenu">
+            Done?<br/><br/>
+            Download it and send it our way. Then...<br/><br/>
+            Look for your sunday sketch on our Tumblr page
+        </div>
+        <div class="toolbar">
+            <img id="pen" onclick="togglePen()" src="./imgs/tools/pen.png"/>
+            <img id="eraser" onclick="toggleEraser()" src="./imgs/tools/eraser.png"/>
+            <img id="select" onclick="toggleSelect()" src="./imgs/tools/select.png"/>
+        </div>
+        <canvas id="canvas">
+            <script type="text/javascript" src="js/canvas.js"></script> 
+        </canvas>
+    </div>
+</body>
+
+</html>
