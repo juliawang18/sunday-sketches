@@ -96,6 +96,7 @@ ol {
 .control-container {
     transform: translate(0, 0);
     position: absolute;
+    z-index: 100;
     top: 0;
     right: 0;
     width: 20vw;
@@ -118,7 +119,7 @@ ol {
     margin: 2rem 3rem;
     
     position: absolute;
-    z-index: 10;
+    z-index: 101;
     top: 0;
     right: 0;
 }

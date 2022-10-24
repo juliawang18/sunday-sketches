@@ -17,12 +17,13 @@ let butSelect = document.getElementById('select');
 
 function togglePen() {
     canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.width = 20;
 }
 
 function toggleEraser() {
+    canvas.isDrawingMode = true;
     canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
     canvas.freeDrawingBrush.width = 10;
-    canvas.isDrawingMode = true;
 }
 
 function toggleSelect() {
