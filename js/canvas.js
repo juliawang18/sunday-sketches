@@ -6,27 +6,39 @@ let canvas = new fabric.Canvas('canvas', {
 canvas.setHeight(window.innerHeight);
 canvas.setWidth(window.innerWidth);
 
-// Add image of the week
+// Tools
+function changeAction(target) {
+    ['pen', 'erase', 'select'].forEach(action => {
+        const t = document.getElementById(action);
+        t.classList.remove('active');
+    });
+    
+    if (typeof target === 'string') target = document.getElementById(target);
+    target.classList.add('active');
 
-
-// Initializing tool buttons
-let butPen = document.getElementById('pen');
-let butEraser = document.getElementById('eraser');
-let butSelect = document.getElementById('select');
-
-function togglePen() {
-    canvas.isDrawingMode = true;
-    canvas.freeDrawingBrush.width = 20;
-}
-
-function toggleEraser() {
-    canvas.isDrawingMode = true;
-    canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
-    canvas.freeDrawingBrush.width = 10;
-}
-
-function toggleSelect() {
-    canvas.isDrawingMode = false;
+    switch (target.id) {
+        case "pen":
+            canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
+            canvas.freeDrawingBrush.width = 35;
+            canvas.isDrawingMode = true;
+            break;
+        case "erase":
+            canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
+            canvas.freeDrawingBrush.width = 10;
+            canvas.isDrawingMode = true;
+            break;
+        case "select":
+            canvas.isDrawingMode = false;
+            break;
+        case "undo":
+            canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
+            canvas.freeDrawingBrush.width = 10;
+            canvas.freeDrawingBrush.inverted = true;
+            canvas.isDrawingMode = true;
+            break;
+        default:
+            break;
+    }
 }
 
 // Adding download to menu

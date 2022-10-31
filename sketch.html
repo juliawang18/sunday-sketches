@@ -7,7 +7,8 @@
     <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
 
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/510/fabric.min.js"></script>
+    <script src="./js/custom-fabric.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/510/fabric.min.js"></script> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,9 +31,9 @@
             Look for your sunday sketch on our <a>Tumblr page</a>.
         </div>
         <div class="toolbar">
-            <img id="pen" onclick="togglePen()" src="./imgs/tools/pen.png"/>
-            <img id="eraser" onclick="toggleEraser()" src="./imgs/tools/eraser.png"/>
-            <img id="select" onclick="toggleSelect()" src="./imgs/tools/select.png"/>
+            <img id="pen" onclick="changeAction(this)" src="./imgs/tools/pen.png"/>
+            <img id="erase" onclick="changeAction(this)" src="./imgs/tools/eraser.png"/>
+            <img id="select" onclick="changeAction(this)" src="./imgs/tools/select.png"/>
         </div>
         <canvas id="canvas"></canvas>
     </div>
