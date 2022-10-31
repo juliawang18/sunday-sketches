@@ -5,3 +5,11 @@ Inspired by [Christoph Niemann](https://www.wired.com/2016/12/sunday-sketching-c
 ![Sunday sketch](/imgs/readme.jpeg)
 
 *A sketch from Niemann's Sunday Sketches series*
+
+* download the sketch
+* some way to upload new photos easily
+* front page look cool
+* drawing tool
+* deployment
+* copy to clipboard
+* paint (custom brush?)
