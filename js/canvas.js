@@ -1,25 +1,39 @@
 // Create cursor SVG
-const getDrawCursor = ( brushSize, brushColor, strokeColor, strokeWeight=2 ) => {
-	const circle = `
+const getDrawCursor = ( brushSize=15, brushColor, strokeColor, strokeWeight=2 ) => {
+    const circle = `
 		<svg
-			height="${ brushSize + strokeWeight }"
-			fill="${ brushColor }"
-            stroke="${ strokeColor }"
-            stroke-width="${ strokeWeight }"
-			viewBox="0 0 ${ brushSize * 2.5 } ${ brushSize * 2.5 }"
-			width="${ brushSize + strokeWeight }"
+			height="${brushSize}"
+			fill="${brushColor}"
+            stroke="${strokeColor}"
+            stroke-width="${strokeWeight}"
+			viewBox="0 0 ${brushSize * 2.5} ${brushSize * 2.5}"
+			width="${brushSize}"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<circle
 				cx="50%"
 				cy="50%"
-				r="${ brushSize + strokeWeight }" 
+				r="${brushSize * 1.25}" 
 			/>
 		</svg>
 	`;
-	
-	return `data:image/svg+xml;base64,${ window.btoa(circle) }`;
+
+    return `data:image/svg+xml;base64,${window.btoa(circle)}`;
 };
+
+// Canvas initialization
+let brushSize = 15;
+let lastTool = "";
+
+let canvas = new fabric.Canvas('canvas', {
+    isDrawingMode: false,
+    freeDrawingCursor: `url(${getDrawCursor(brushSize, 'black', 'white')}) ${brushSize / 2} ${brushSize / 2}, crosshair`,
+});
+
+canvas.setHeight(window.innerHeight);
+canvas.setWidth(window.innerWidth);
+
+fabric.Object.prototype.selectable = false;
 
 // Tool selection
 function changeAction(target) {
@@ -33,16 +47,20 @@ function changeAction(target) {
 
     switch (target.id) {
         case "pen":
+            lastTool = "pen";
             canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-            // canvas.freeDrawingBrush = new fabric.CustomBrush(canvas);
-            canvas.freeDrawingBrush.width = 15;
             canvas.isDrawingMode = true;
+            brushSize = parseInt(document.getElementById("size").value);
+            canvas.freeDrawingBrush.width = brushSize;
+            canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, 'black', 'white')}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
             break;
         case "erase":
+            lastTool = "eraser";
             canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
-            canvas.freeDrawingBrush.width = 15;
-            canvas.freeDrawingCursor = `url(${ getDrawCursor(15, 'white', 'black') }) ${ 15 / 2 } ${ 15 / 2 }, crosshair`,
             canvas.isDrawingMode = true;
+            brushSize = parseInt(document.getElementById("size").value);
+            canvas.freeDrawingBrush.width = brushSize;
+            canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, 'white', 'black')}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
             break;
         case "select":
             canvas.isDrawingMode = false;
@@ -52,28 +70,22 @@ function changeAction(target) {
     }
 }
 
-// Canvas initialization
-let canvas = new fabric.Canvas('canvas', {
-    isDrawingMode: true,
-    freeDrawingCursor: `url(${ getDrawCursor(15, 'black', 'white') }) ${ 15 / 2 } ${ 15 / 2 }, crosshair`,
-});
+// Toggle brush / eraser size
+document.getElementById("size").onchange = function () {
+    brushSize = parseInt(document.getElementById("size").value);
+    canvas.freeDrawingBrush.width = brushSize;
 
-canvas.setHeight(window.innerHeight);
-canvas.setWidth(window.innerWidth);
+    let brushColor, strokeColor;
+    if (lastTool == "pen") {
+        brushColor = 'black';
+        strokeColor = 'white';
+    } else if (lastTool == "eraser") {
+        brushColor = 'white';
+        strokeColor = 'black';
+    }
+    canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, brushColor, strokeColor)}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
+    // console.log(size);
+};
 
-canvas.freeDrawingBrush.width = 15;
 
-// Adding download to menu
-let saveButton = document.getElementById("save");
 
-saveButton.addEventListener(
-    "click",
-    function (e) {
-        this.href = canvas.toDataURL({
-            format: "png"
-        });
-
-        this.download = "sundaysketch.png";
-    },
-    false
-);
