@@ -129,6 +129,25 @@ ol {
     opacity: 0.5;
 }
 
+#save {
+    text-decoration: underline;
+}
+
+#save:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#menu a {
+    text-decoration: underline;
+}
+
+#menu a:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
 .toolbar {
     position: absolute;
     bottom: 0;

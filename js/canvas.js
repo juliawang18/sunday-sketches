@@ -1,13 +1,12 @@
 // Canvas initialization
-var canvas = new fabric.Canvas('canvas', {
+let canvas = new fabric.Canvas('canvas', {
     isDrawingMode: false
 });
 
 canvas.setHeight(window.innerHeight);
 canvas.setWidth(window.innerWidth);
 
-
-canvas.add(new fabric.Circle({ radius: 30, fill: '#f55', top: window.innerHeight / 2, left: window.innerWidth / 2 }));
+// Add image of the week
 
 
 // Initializing tool buttons
@@ -29,3 +28,18 @@ function toggleEraser() {
 function toggleSelect() {
     canvas.isDrawingMode = false;
 }
+
+// Adding download to menu
+let saveButton = document.getElementById("save");
+
+saveButton.addEventListener(
+    "click",
+    function (e) {
+        this.href = canvas.toDataURL({
+            format: "png"
+        });
+
+        this.download = "sundaysketch.png";
+    },
+    false
+);
