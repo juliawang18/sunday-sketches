@@ -19,22 +19,17 @@ function changeAction(target) {
     switch (target.id) {
         case "pen":
             canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-            canvas.freeDrawingBrush.width = 35;
+            // canvas.freeDrawingBrush = new fabric.CustomBrush(canvas);
+            canvas.freeDrawingBrush.width = 15;
             canvas.isDrawingMode = true;
             break;
         case "erase":
             canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
-            canvas.freeDrawingBrush.width = 10;
+            canvas.freeDrawingBrush.width = 15;
             canvas.isDrawingMode = true;
             break;
         case "select":
             canvas.isDrawingMode = false;
-            break;
-        case "undo":
-            canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
-            canvas.freeDrawingBrush.width = 10;
-            canvas.freeDrawingBrush.inverted = true;
-            canvas.isDrawingMode = true;
             break;
         default:
             break;
