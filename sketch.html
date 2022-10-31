@@ -4,6 +4,7 @@
 <head>
     <title>Sunday Sketching</title>
     <meta name="description" content="Our first page">
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
 
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/510/fabric.min.js"></script>
@@ -14,6 +15,7 @@
 
     <script type="text/javascript" src="js/menu.js" defer></script> 
     <script type="text/javascript" src="js/brush.js" defer></script> 
+    <script type="text/javascript" src="js/canvas.js" defer></script> 
 </head>
 
 <body>
@@ -24,17 +26,15 @@
         <div id="tab" class="control-tab" onclick="toggleMenu()">Done?</div>
         <div id="menu" class="control-container hideMenu">
             Done?<br/><br/>
-            Download it and send it our way. Then...<br/><br/>
-            Look for your sunday sketch on our Tumblr page
+            <span id="save">Download it</span> and <a>send it our way</a>. Then...<br/><br/>
+            Look for your sunday sketch on our <a>Tumblr page</a>.
         </div>
         <div class="toolbar">
             <img id="pen" onclick="togglePen()" src="./imgs/tools/pen.png"/>
             <img id="eraser" onclick="toggleEraser()" src="./imgs/tools/eraser.png"/>
             <img id="select" onclick="toggleSelect()" src="./imgs/tools/select.png"/>
         </div>
-        <canvas id="canvas">
-            <script type="text/javascript" src="js/canvas.js"></script> 
-        </canvas>
+        <canvas id="canvas"></canvas>
     </div>
 </body>
 
