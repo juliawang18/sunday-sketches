@@ -147,7 +147,6 @@ ol {
     opacity: 0.5;
 }
 
-
 .toolbar {
     position: absolute;
     bottom: 0;
@@ -160,11 +159,16 @@ ol {
 
 .toolbar img {
     height: 10vh;
+    transform: translate(0px, 26px);
 }
 
 .toolbar img:hover {
-    opacity: 0.5;
     cursor: pointer;
+    transform: translate(0px, 0px);
+}
+
+.toolbar img.active {
+    transform: translate(0px, 0px);
 }
 
 #canvas {
@@ -173,7 +177,7 @@ ol {
     left: 0;
 }
 
-/* Input styling */
+/******** Input slider styling **********/
 .brushsize-container {
     position: absolute;
     left: -20px;
