@@ -7,15 +7,17 @@
     <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
 
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/510/fabric.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="js/menu.js" defer></script> 
-    <script type="text/javascript" src="js/brush.js" defer></script> 
+
+    <!-- Canvas Javascript -->
     <script type="text/javascript" src="js/canvas.js" defer></script> 
+    <script src="./js/fabric.js"></script>
+    <script src="./js/brush.js"></script>
 </head>
 
 <body>
@@ -29,10 +31,13 @@
             <span id="save">Download it</span> and <a>send it our way</a>. Then...<br/><br/>
             Look for your sunday sketch on our <a>Tumblr page</a>.
         </div>
+        <div class="brushsize-container">
+            <input id="size" type="range" min="1" max="100" step="1" value="15">
+        </div>
         <div class="toolbar">
-            <img id="pen" onclick="togglePen()" src="./imgs/tools/pen.png"/>
-            <img id="eraser" onclick="toggleEraser()" src="./imgs/tools/eraser.png"/>
-            <img id="select" onclick="toggleSelect()" src="./imgs/tools/select.png"/>
+            <img id="pen" onclick="changeAction(this)" src="./imgs/tools/pen.png"/>
+            <img id="erase" onclick="changeAction(this)" src="./imgs/tools/eraser.png"/>
+            <img id="select" onclick="changeAction(this)" src="./imgs/tools/select.png"/>
         </div>
         <canvas id="canvas"></canvas>
     </div>

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Juliawang';
-    src: url("./fonts/Juliawang-Regular.ttf") format('truetype'); 
+    src: url("./fonts/Juliawang-Regular.ttf") format('truetype');
 }
 
 body {
@@ -14,6 +14,7 @@ body {
     background-color: #ffc800;
 }
 
+/***** Front Page *****/
 button {
     padding: 0.8rem 2rem;
     background-color: #000;
@@ -36,36 +37,54 @@ ol {
 }
 
 .header-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
     padding: 5rem;
 }
 
-.left-container {
-    width: 30vw;
+.text-container {
+    width: 40%;
     max-height: 100vh;
+    text-align: center;
 }
 
-.right-container {
-    width: 70vw;
-
+.home-button-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.info-button-wrapper {
-    display: flex;
-    justify-content: center;
+.header-logo {
+    width: 80%;
+}
+
+.dog-container {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    z-index: -10;
 }
 
 .header-img {
-    max-width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 4rem;
+    bottom: 3rem;
 }
 
 .header-gif {
-    max-width: 80%;
+    max-width: 500px;
+    position: absolute;
+    right: 3rem;
+    bottom: 1rem;
 }
+
+/***** Sketch Page *****/
 
 .sketch-container {
     width: 100vw;
@@ -107,17 +126,13 @@ ol {
 }
 
 .hideMenu {
-    transform: translate(40vw, -40vh);
+    transform: translate(50vw, -60vh);
     transition: transform 0.35s
-}
-
-.refresh-container {
-    height: 1rem;
 }
 
 .control-tab {
     margin: 2rem 3rem;
-    
+
     position: absolute;
     z-index: 101;
     top: 0;
@@ -147,23 +162,28 @@ ol {
     opacity: 0.5;
 }
 
-
 .toolbar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 300px;
     z-index: 11;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .toolbar img {
     height: 10vh;
+    transform: translate(0px, 26px);
 }
 
 .toolbar img:hover {
-    opacity: 0.5;
     cursor: pointer;
+    transform: translate(0px, 0px);
+}
+
+.toolbar img.active {
+    transform: translate(0px, 0px);
 }
 
 #canvas {
@@ -172,7 +192,112 @@ ol {
     left: 0;
 }
 
+/******** Input slider styling **********/
+.brushsize-container {
+    position: fixed;
+    left: -20px;
+    transform: rotate(270deg);
+    z-index: 100;
+}
 
+input[type=range] {
+    height: 27px;
+    appearance: none;
+    margin: 10px 0;
+    width: 100%;
+}
 
+input[type=range]:focus {
+    outline: none;
+}
 
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #000000;
+    border-radius: 26px;
+    border: 0px solid #000000;
+}
 
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 21px;
+    width: 21px;
+    border-radius: 25px;
+    background: #000000;
+    cursor: pointer;
+    appearance: none;
+    margin-top: -8.5px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #000000;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #000000;
+    border-radius: 26px;
+    border: 0px solid #000000;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 21px;
+    width: 21px;
+    border-radius: 25px;
+    background: #000000;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #000000;
+    border: 0px solid #000000;
+    border-radius: 52px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #000000;
+    border: 0px solid #000000;
+    border-radius: 52px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 21px;
+    width: 21px;
+    border-radius: 25px;
+    background: #000000;
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #000000;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #000000;
+}
