@@ -129,11 +129,11 @@ ol {
     opacity: 0.5;
 }
 
-#save {
+#save, #copy {
     text-decoration: underline;
 }
 
-#save:hover {
+#save, #copy:hover {
     cursor: pointer;
     opacity: 0.5;
 }
