@@ -14,6 +14,7 @@ body {
     background-color: #ffc800;
 }
 
+/***** Front Page *****/
 button {
     padding: 0.8rem 2rem;
     background-color: #000;
@@ -36,36 +37,54 @@ ol {
 }
 
 .header-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
     padding: 5rem;
 }
 
-.left-container {
-    width: 30vw;
+.text-container {
+    width: 40%;
     max-height: 100vh;
+    text-align: center;
 }
 
-.right-container {
-    width: 70vw;
-
+.home-button-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.info-button-wrapper {
-    display: flex;
-    justify-content: center;
+.header-logo {
+    width: 80%;
+}
+
+.dog-container {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    z-index: -10;
 }
 
 .header-img {
-    max-width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 4rem;
+    bottom: 3rem;
 }
 
 .header-gif {
-    max-width: 80%;
+    max-width: 500px;
+    position: absolute;
+    right: 3rem;
+    bottom: 1rem;
 }
+
+/***** Sketch Page *****/
 
 .sketch-container {
     width: 100vw;
@@ -107,12 +126,8 @@ ol {
 }
 
 .hideMenu {
-    transform: translate(40vw, -40vh);
+    transform: translate(50vw, -60vh);
     transition: transform 0.35s
-}
-
-.refresh-container {
-    height: 1rem;
 }
 
 .control-tab {
@@ -148,7 +163,7 @@ ol {
 }
 
 .toolbar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 300px;
     z-index: 11;
@@ -179,7 +194,7 @@ ol {
 
 /******** Input slider styling **********/
 .brushsize-container {
-    position: absolute;
+    position: fixed;
     left: -20px;
     transform: rotate(270deg);
     z-index: 100;
