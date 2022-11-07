@@ -166,12 +166,13 @@ ol {
     opacity: 0.5;
 }
 
-#save,
+#save, 
 #copy {
+    opacity: 1;
     text-decoration: underline;
 }
 
-#save,
+#save:hover, 
 #copy:hover {
     cursor: pointer;
     opacity: 0.5;
