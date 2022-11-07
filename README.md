@@ -13,3 +13,10 @@ Inspired by [Christoph Niemann](https://www.wired.com/2016/12/sunday-sketching-c
 * deployment
 * copy to clipboard
 * paint (custom brush?)
+
+
+* adding "for chrome" on home
+* responsive canvas
+* responsive home page
+* deployment
+* fix download
