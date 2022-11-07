@@ -95,7 +95,6 @@ document.getElementById("size").onchange = function () {
         strokeColor = 'black';
     }
     canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, brushColor, strokeColor)}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
-    // console.log(size);
 };
 
 function downloadImage(data, filename) {
