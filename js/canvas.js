@@ -34,17 +34,23 @@ canvas.setBackgroundColor('white');
 canvas.setHeight(window.innerHeight);
 canvas.setWidth(window.innerWidth);
 
+fabric.Object.prototype.selectable = false;
+
 // Add image of the week
 let imageWidth = canvas.getWidth()/4
 fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/sunday_header.png', function(img) {
+    
     img.scaleToWidth(imageWidth);
     let imageHeight = img.getScaledHeight()
 
     img.top = window.innerHeight/2 - imageHeight/2
     img.left = window.innerWidth/2 - imageWidth/2
+    img.selectable = true
     canvas.add(img);
+}, {
+    crossOrigin: 'anonymous'
 });
-fabric.Object.prototype.selectable = false;
+
 
 // Tool selection
 function changeAction(target) {
