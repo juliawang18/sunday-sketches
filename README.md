@@ -17,7 +17,8 @@ Inspired by [Christoph Niemann](https://www.wired.com/2016/12/sunday-sketching-c
 --
 
 * adding "for chrome" on home
-* responsive canvas
+* ~responsive canvas~
 * responsive home page
 * deployment
-* fix download
+* ~image nonerasable (alex)~
+* STRETCH GOAL - fun exploratory thing on the home page (alex)

@@ -37,8 +37,11 @@ canvas.setWidth(window.innerWidth);
 fabric.Object.prototype.selectable = false;
 
 // Add image of the week
+let displayedImage;
 let imageWidth = canvas.getWidth()/4
 fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/sunday_header.png', function(img) {
+    
+    displayedImage = img;
     
     img.scaleToWidth(imageWidth);
     let imageHeight = img.getScaledHeight()
