@@ -6,19 +6,6 @@ Inspired by [Christoph Niemann](https://www.wired.com/2016/12/sunday-sketching-c
 
 *A sketch from Niemann's Sunday Sketches series*
 
-* download the sketch
-* some way to upload new photos easily
-* front page look cool
-* drawing tool
-* deployment
-* copy to clipboard
-* paint (custom brush?)
-
---
 
 * adding "for chrome" on home
-* ~responsive canvas~
-* responsive home page
 * deployment
-* ~image nonerasable (alex)~
-* STRETCH GOAL - fun exploratory thing on the home page (alex)

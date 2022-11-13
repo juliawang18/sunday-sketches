@@ -1,5 +1,5 @@
 // Create cursor SVG
-const getDrawCursor = ( brushSize=15, brushColor, strokeColor, strokeWeight=2 ) => {
+const getDrawCursor = (brushSize = 15, brushColor, strokeColor, strokeWeight = 2) => {
     const circle = `
 		<svg
 			height="${brushSize}"
@@ -38,17 +38,16 @@ fabric.Object.prototype.selectable = false;
 
 // Add image of the week
 let displayedImage;
-let imageWidth = canvas.getWidth()/4
-fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/sunday_header.png', function(img) {
-    
-    displayedImage = img;
-    
-    img.scaleToWidth(imageWidth);
-    let imageHeight = img.getScaledHeight()
+let imageWidth = canvas.getWidth() / 4
+fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/sunday_header.png', function (img) {
 
-    img.top = window.innerHeight/2 - imageHeight/2
-    img.left = window.innerWidth/2 - imageWidth/2
-    img.selectable = true
+    img.scaleToWidth(imageWidth);
+    let imageHeight = img.getScaledHeight();
+
+    img.top = window.innerHeight / 2 - imageHeight / 2;
+    img.left = window.innerWidth / 2 - imageWidth / 2;
+    img.selectable = true;
+    img.set("erasable", false);
     canvas.add(img);
 }, {
     crossOrigin: 'anonymous'
@@ -104,7 +103,6 @@ document.getElementById("size").onchange = function () {
         strokeColor = 'black';
     }
     canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, brushColor, strokeColor)}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
-    // console.log(size);
 };
 
 function downloadImage(data, filename) {
@@ -134,9 +132,9 @@ let copyButton = document.getElementById("copy");
 copyButton.addEventListener(
     "click",
     function (e) {
-        canvas.getElement().toBlob(function(blob) { 
+        canvas.getElement().toBlob(function (blob) {
             const item = new ClipboardItem({ "image/png": blob });
-            navigator.clipboard.write([item]); 
+            navigator.clipboard.write([item]);
         });
 
     }
@@ -144,7 +142,7 @@ copyButton.addEventListener(
 
 copyButton.addEventListener(
     "click",
-    function(e) {
+    function (e) {
         copyButton.style.backgroundColor = '#FFF6D5';
         setTimeout(() => { copyButton.style.backgroundColor = '#ffc800'; }, 450);
     }
