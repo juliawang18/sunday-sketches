@@ -36,11 +36,10 @@ canvas.setWidth(window.innerWidth);
 
 fabric.Object.prototype.selectable = false;
 
-// Add image of the week
-let displayedImage;
-let imageWidth = canvas.getWidth() / 4
-fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', function (img) {
+let cachedDownloadedImage = undefined;
 
+function addImageToCanvas(img) {
+    let imageWidth = canvas.getWidth() / 4
     img.scaleToWidth(imageWidth);
     let imageHeight = img.getScaledHeight();
 
@@ -49,10 +48,15 @@ fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', funct
     img.selectable = true;
     img.set("erasable", false);
     canvas.add(img);
-}, {
-    crossOrigin: 'anonymous'
-});
+}
 
+function getImageAndAddToCanvas() {
+    console.log("here");
+    fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', function (img) {
+        cachedDownloadedImage = img
+        addImageToCanvas(img)
+    }, { crossOrigin: 'anonymous' })
+}
 
 // Tool selection
 function changeAction(target) {
@@ -105,13 +109,29 @@ document.getElementById("size").onchange = function () {
     canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, brushColor, strokeColor)}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
 };
 
-function downloadImage(data, filename) {
+function downloadCanvas(data, filename) {
     var a = document.createElement('a');
     a.href = data;
     a.download = filename;
     document.body.appendChild(a);
     a.click();
     a.remove();
+}
+
+window.onbeforeunload = function () {
+    const json = canvas.toJSON();
+    localStorage.setItem('canvas', JSON.stringify(json));
+}
+
+function clearAll() {
+    // wipe the canvas and re-add the picture 
+    canvas.clear();
+    if (cachedDownloadedImage) {
+        addImageToCanvas(cachedDownloadedImage);
+    } else {
+        getImageAndAddToCanvas();
+    }
+
 }
 
 // Adding download to menu
@@ -121,8 +141,8 @@ saveButton.addEventListener(
     function (e) {
         let link = document.createElement('a');
         let canvas = document.getElementById('canvas');
-        let dataURL = canvas.toDataURL("image/jpeg");
-        downloadImage(dataURL, 'sundaysketch.jpeg')
+        let dataURL = canvas.toDataURL("image/png");
+        downloadCanvas(dataURL, 'sundaysketch.png')
     }
 );
 
@@ -147,6 +167,23 @@ copyButton.addEventListener(
         setTimeout(() => { copyButton.style.backgroundColor = '#ffc800'; }, 450);
     }
 )
+
+// canvas initialization begins here
+if (localStorage.getItem("canvas")) {
+    const canvasJson = JSON.parse(localStorage.getItem("canvas"));
+    if (canvasJson.objects.length === 0) {
+        getImageAndAddToCanvas();
+        localStorage.setItem('canvas', null);
+    } else {
+        canvas.loadFromJSON(canvasJson, canvas.renderAll.bind(canvas), function (o, object) {
+            canvas.add(object);
+        });
+    }
+} else {
+    getImageAndAddToCanvas();
+}
+
+
 
 
 
