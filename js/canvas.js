@@ -51,7 +51,6 @@ function addImageToCanvas(img) {
 }
 
 function getImageAndAddToCanvas() {
-    console.log("here");
     fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', function (img) {
         cachedDownloadedImage = img
         addImageToCanvas(img)
@@ -119,14 +118,18 @@ function downloadCanvas(data, filename) {
 }
 
 window.onbeforeunload = function () {
-    const json = canvas.toJSON();
-    localStorage.setItem('canvas', JSON.stringify(json));
+    const canvasJson = canvas.toJSON();
+    if (!(canvasJson.objects.length === 1 && canvasJson.objects[0].type === 'image')) {
+        // don't do anything if the image is the only thing on the page (this prevents the case of saving the old image)
+        localStorage.setItem('canvas', JSON.stringify(json));
+    }
 }
 
 function clearAll() {
     // wipe the canvas and re-add the picture 
     canvas.clear();
     if (cachedDownloadedImage) {
+        // a problem here arises if the pushed image is different from what's in the "cached"
         addImageToCanvas(cachedDownloadedImage);
     } else {
         getImageAndAddToCanvas();
@@ -172,8 +175,9 @@ copyButton.addEventListener(
 if (localStorage.getItem("canvas")) {
     const canvasJson = JSON.parse(localStorage.getItem("canvas"));
     if (canvasJson.objects.length === 0) {
+        // this is to address the edge case in which the image doesn't get added, an an "empty" canvas gets added to local storage
         getImageAndAddToCanvas();
-        localStorage.setItem('canvas', null);
+        localStorage.setItem('canvas', null);   
     } else {
         canvas.loadFromJSON(canvasJson, canvas.renderAll.bind(canvas), function (o, object) {
             canvas.add(object);
