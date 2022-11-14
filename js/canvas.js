@@ -169,7 +169,6 @@ copyButton.addEventListener(
 )
 
 // canvas initialization begins here
-
 if (localStorage.getItem("canvas")) {
     const canvasJson = JSON.parse(localStorage.getItem("canvas"))
     if (canvasJson.objects.length === 0) {
