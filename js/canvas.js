@@ -122,8 +122,6 @@ window.onbeforeunload = function () {
     if (!(canvasJson.objects.length === 1 && canvasJson.objects[0].type === 'image')) {
         localStorage.setItem('canvas', JSON.stringify(canvasJson));
     }
- 
-    
 }
 
 function clearAll() {
