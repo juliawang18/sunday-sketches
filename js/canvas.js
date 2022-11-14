@@ -52,10 +52,11 @@ function addImageToCanvas(img) {
 }
 
 function getImageAndAddToCanvas() {
+    console.log("here");
     fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/image_of_week.png', function (img) {
         cachedDownloadedImage = img
         addImageToCanvas(img)
-    }, {crossOrigin: 'anonymous'})
+    }, { crossOrigin: 'anonymous' })
 }
 
 // Tool selection
@@ -118,7 +119,7 @@ function downloadCanvas(data, filename) {
     a.remove();
 }
 
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     const json = canvas.toJSON();
     localStorage.setItem('canvas', JSON.stringify(json));
 }
@@ -127,11 +128,11 @@ function clearAll() {
     // wipe the canvas and re-add the picture 
     canvas.clear();
     if (cachedDownloadedImage) {
-        addImageToCanvas(cachedDownloadedImage)
+        addImageToCanvas(cachedDownloadedImage);
     } else {
-        getImageAndAddToCanvas()
+        getImageAndAddToCanvas();
     }
-    
+
 }
 
 // Adding download to menu
@@ -170,17 +171,17 @@ copyButton.addEventListener(
 
 // canvas initialization begins here
 if (localStorage.getItem("canvas")) {
-    const canvasJson = JSON.parse(localStorage.getItem("canvas"))
-    if (canvasJson.objects.length === 0) {
-        getImageAndAddToCanvas()
+    const canvasJson = JSON.parse(localStorage.getItem("canvas"));
+    if (canvasJson.objects.length === 1) {
+        getImageAndAddToCanvas();
         localStorage.setItem('canvas', null);
     } else {
-        canvas.loadFromJSON(canvasJson, canvas.renderAll.bind(canvas), function(o, object) {
-            canvas.add(object)
-        })
+        canvas.loadFromJSON(canvasJson, canvas.renderAll.bind(canvas), function (o, object) {
+            canvas.add(object);
+        });
     }
 } else {
-    getImageAndAddToCanvas()
+    getImageAndAddToCanvas();
 }
 
 
