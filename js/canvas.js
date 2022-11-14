@@ -127,7 +127,7 @@ window.onbeforeunload = function () {
 function clearAll() {
     // wipe the canvas and re-add the picture 
     canvas.clear();
-    localStorage.setItem('canvas', null);
+    localStorage.clear()
     if (cachedDownloadedImage) {
         // a problem here arises if the pushed image is different from what's in the "cached"
         addImageToCanvas(cachedDownloadedImage);
