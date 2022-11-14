@@ -36,7 +36,6 @@ canvas.setWidth(window.innerWidth);
 
 fabric.Object.prototype.selectable = false;
 
-
 let cachedDownloadedImage = undefined;
 
 function addImageToCanvas(img) {

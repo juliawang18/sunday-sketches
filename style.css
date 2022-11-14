@@ -69,6 +69,11 @@ ol {
     justify-content: center;
 }
 
+
+.waiting-notification {
+    font-size: 1.5rem;
+}
+
 .header-logo {
     width: 80%;
 }
@@ -76,7 +81,7 @@ ol {
 .dog-container {
     width: 100vw;
     height: 50vh;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     z-index: -10;
 }
@@ -90,7 +95,7 @@ ol {
 
 .header-gif {
     max-width: 500px;
-    position: absolute;
+    position: fixed;
     right: 3rem;
     bottom: 1rem;
 }
