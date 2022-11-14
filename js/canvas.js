@@ -117,25 +117,6 @@ function downloadCanvas(data, filename) {
     a.remove();
 }
 
-window.onbeforeunload = function () {
-    const canvasJson = canvas.toJSON();
-    if (!(canvasJson.objects.length === 1 && canvasJson.objects[0].type === 'image')) {
-        localStorage.setItem('canvas', JSON.stringify(canvasJson));
-    }
-}
-
-function clearAll() {
-    // wipe the canvas and re-add the picture 
-    canvas.clear();
-    localStorage.clear()
-    if (cachedDownloadedImage) {
-        // a problem here arises if the pushed image is different from what's in the "cached"
-        addImageToCanvas(cachedDownloadedImage);
-    } else {
-        getImageAndAddToCanvas();
-    }
-
-}
 
 // Adding download to menu
 let saveButton = document.getElementById("save");
@@ -170,23 +151,6 @@ copyButton.addEventListener(
         setTimeout(() => { copyButton.style.backgroundColor = '#ffc800'; }, 450);
     }
 )
-
-// canvas initialization begins here
-if (localStorage.getItem("canvas")) {
-    const canvasJson = JSON.parse(localStorage.getItem("canvas"));
-    if (canvasJson.objects.length === 0) {
-        // this is to address the edge case in which the image doesn't get added, an an "empty" canvas gets added to local storage
-        getImageAndAddToCanvas();
-        localStorage.setItem('canvas', null);   
-    } else {
-        canvas.loadFromJSON(canvasJson, canvas.renderAll.bind(canvas), function (o, object) {
-            canvas.add(object);
-        });
-    }
-} else {
-    getImageAndAddToCanvas();
-}
-
 
 
 
