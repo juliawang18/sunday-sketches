@@ -120,9 +120,10 @@ function downloadCanvas(data, filename) {
 window.onbeforeunload = function () {
     const canvasJson = canvas.toJSON();
     if (!(canvasJson.objects.length === 1 && canvasJson.objects[0].type === 'image')) {
-        // don't do anything if the image is the only thing on the page (this prevents the case of saving the old image)
-        localStorage.setItem('canvas', JSON.stringify(json));
+        localStorage.setItem('canvas', JSON.stringify(canvasJson));
     }
+ 
+    
 }
 
 function clearAll() {
