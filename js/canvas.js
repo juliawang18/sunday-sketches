@@ -53,7 +53,7 @@ function addImageToCanvas(img) {
 
 function getImageAndAddToCanvas() {
     console.log("here");
-    fabric.Image.fromURL('https://raw.githubusercontent.com/juliawang18/sunday-sketches/main/imgs/image_of_week.png', function (img) {
+    fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', function (img) {
         cachedDownloadedImage = img
         addImageToCanvas(img)
     }, { crossOrigin: 'anonymous' })
@@ -142,8 +142,8 @@ saveButton.addEventListener(
     function (e) {
         let link = document.createElement('a');
         let canvas = document.getElementById('canvas');
-        let dataURL = canvas.toDataURL("image/jpeg");
-        downloadCanvas(dataURL, 'sundaysketch.jpeg')
+        let dataURL = canvas.toDataURL("image/png");
+        downloadCanvas(dataURL, 'sundaysketch.png')
     }
 );
 
@@ -172,7 +172,7 @@ copyButton.addEventListener(
 // canvas initialization begins here
 if (localStorage.getItem("canvas")) {
     const canvasJson = JSON.parse(localStorage.getItem("canvas"));
-    if (canvasJson.objects.length === 1) {
+    if (canvasJson.objects.length === 0) {
         getImageAndAddToCanvas();
         localStorage.setItem('canvas', null);
     } else {
