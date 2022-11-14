@@ -29,6 +29,7 @@ let canvas = new fabric.Canvas('canvas', {
     isDrawingMode: false,
     freeDrawingCursor: `url(${getDrawCursor(brushSize, 'black', 'white')}) ${brushSize / 2} ${brushSize / 2}, crosshair`,
 });
+
 canvas.setBackgroundColor('white');
 
 canvas.setHeight(window.innerHeight);
@@ -36,8 +37,9 @@ canvas.setWidth(window.innerWidth);
 
 fabric.Object.prototype.selectable = false;
 
-let cachedDownloadedImage = undefined;
+getImageAndAddToCanvas();
 
+// Functions to add img to canvas
 function addImageToCanvas(img) {
     let imageWidth = canvas.getWidth() / 4
     img.scaleToWidth(imageWidth);
@@ -52,7 +54,6 @@ function addImageToCanvas(img) {
 
 function getImageAndAddToCanvas() {
     fabric.Image.fromURL('https://sundaysketching.art/imgs/image_of_week.png', function (img) {
-        cachedDownloadedImage = img
         addImageToCanvas(img)
     }, { crossOrigin: 'anonymous' })
 }
@@ -108,6 +109,7 @@ document.getElementById("size").onchange = function () {
     canvas.freeDrawingCursor = `url(${getDrawCursor(brushSize, brushColor, strokeColor)}) ${brushSize / 2} ${brushSize / 2}, crosshair`;
 };
 
+// On click, download canvas 
 function downloadCanvas(data, filename) {
     var a = document.createElement('a');
     a.href = data;
@@ -151,6 +153,7 @@ copyButton.addEventListener(
         setTimeout(() => { copyButton.style.backgroundColor = '#ffc800'; }, 450);
     }
 )
+
 
 
 
